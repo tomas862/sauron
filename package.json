@@ -1,0 +1,33 @@
+{
+    "dependencies": {
+        "vue": "^2.5.16",
+        "vue-router": "^3.0.1"
+    },
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.19.0",
+        "babel-eslint": "^8.2.5",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-es2017": "^6.24.1",
+        "eslint": "^5.0.1",
+        "eslint-config-airbnb": "^17.0.0",
+        "eslint-loader": "^2.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "eslint-plugin-jsx-a11y": "^6.0.3",
+        "eslint-plugin-react": "^7.10.0",
+        "eslint-plugin-vue": "^4.5.0",
+        "fork-ts-checker-webpack-plugin": "^0.4.2",
+        "node-sass": "^4.9.0",
+        "sass-loader": "^7.0.3",
+        "vue-loader": "vue-loader@^14.2.2",
+        "vue-template-compiler": "^2.5.16",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server --hot",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production"
+    }
+}
