@@ -7,7 +7,7 @@ namespace App\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @MongoDb\Document
+ * @MongoDb\Document(repositoryClass="App\Repository\ProjectRepository")
  */
 class Project
 {
