@@ -4,7 +4,7 @@ export default {
   props: [],
   data() {
     return {
-      intro: 'hello world test',
+      intro: 'hello world',
     };
   },
 };

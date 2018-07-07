@@ -29,17 +29,6 @@ class Project
     }
 
     /**
-     * @param string $id
-     *
-     * @return Project
-     */
-    public function setId(string $id): self
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getName()

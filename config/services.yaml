@@ -28,3 +28,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    League\Tactician\CommandBus:
+        alias: tactician.commandbus
+
+    App\Handler\Project\CreateProject\CreateProjectHandler:
+        arguments:
+            - '@doctrine_mongodb.odm.default_document_manager'
+
+        tags:
+            - {name: tactician.handler, typehints: true}

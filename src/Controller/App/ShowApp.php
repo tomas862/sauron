@@ -13,7 +13,7 @@ class ShowApp extends AbstractController
     /**
      * Loads main app content
      *
-     * @Route(path="/", methods={"GET"})
+     * @Route(path="/", methods={"GET"}, name="root")
      *
      * @return Response
      */
