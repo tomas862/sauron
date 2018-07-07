@@ -32,6 +32,9 @@ services:
     League\Tactician\CommandBus:
         alias: tactician.commandbus
 
+    app.middleware.response_message:
+        class: 'App\Handler\Middleware\ResponseMessageMiddleware'
+
     App\Handler\Project\CreateProject\CreateProjectHandler:
         arguments:
             - '@doctrine_mongodb.odm.default_document_manager'

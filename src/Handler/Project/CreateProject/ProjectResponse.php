@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace App\Handler\Project\CreateProject;
 
 use App\Document\Project;
+use App\Handler\HandlerResultInterface;
 
-class ProjectResponse
+class ProjectResponse implements HandlerResultInterface
 {
     /**
      * @var Project
@@ -23,15 +24,21 @@ class ProjectResponse
         $this->project = $project;
     }
 
-    public function getName(): string
+    /**
+     * @inheritDoc
+     */
+    public function getResponseMessage(): ?string
     {
-        return $this->project->getName();
+        return null;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function serialize(): array
     {
         return [
-            'name' => $this->getName()
+            'name' => $this->project->getName()
         ];
     }
 }

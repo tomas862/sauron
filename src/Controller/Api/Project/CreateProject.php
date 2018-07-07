@@ -37,10 +37,8 @@ class CreateProject extends AbstractController
     public function __invoke()
     {
         /** @var ProjectResponse $result */
-        $result = $this->commandBus->handle(
-            new CreateProjectCommand('test')
+        return $this->commandBus->handle(
+            new CreateProjectCommand('test2')
         );
-
-        return new JsonResponse($result->serialize());
     }
 }
