@@ -4,24 +4,30 @@ declare(strict_types=1);
 
 namespace App\Handler\Project\CreateProject;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 class CreateProjectCommand
 {
     /**
-     * @var string
+     *
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
-     * CreateProject constructor.
      *
      * @param string $name
+     *
+     * @return CreateProjectCommand
      */
-    public function __construct(string $name)
+    public function setName(string $name): CreateProjectCommand
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
+     *
      * @return string
      */
     public function getName(): string

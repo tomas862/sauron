@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Controller\Api\Project;
 
 use App\Handler\Project\CreateProject\CreateProjectCommand;
-use App\Handler\Project\CreateProject\ProjectResponse;
 use League\Tactician\CommandBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class CreateProject extends AbstractController
 {
@@ -17,28 +17,39 @@ class CreateProject extends AbstractController
      * @var CommandBus
      */
     private $commandBus;
+    /**
+     * @var SerializerInterface
+     */
+    private $serializer;
 
     /**
      * CreateProject constructor.
      *
      * @param CommandBus $commandBus
+     * @param SerializerInterface $serializer
      */
-    public function __construct(CommandBus $commandBus)
+    public function __construct(CommandBus $commandBus, SerializerInterface $serializer)
     {
         $this->commandBus = $commandBus;
+        $this->serializer = $serializer;
     }
 
     /**
      * Creates project - project is used as a placeholder for inner app logic
      *
-     * @Route(path="/api/project/create", methods={"POST"}, name="project_create")
+     * @param Request $request
      *
+     * @return Response
+     *
+     * @throws \LogicException
      */
-    public function __invoke()
+    public function __invoke(Request $request): Response
     {
-        /** @var ProjectResponse $result */
+        $data = $request->getContent();
+        $createProjectCommand = $this->serializer->deserialize($data, CreateProjectCommand::class, 'json');
+
         return $this->commandBus->handle(
-            new CreateProjectCommand('test2')
+            $createProjectCommand
         );
     }
 }

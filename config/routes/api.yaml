@@ -1,0 +1,3 @@
+api_project:
+    prefix: '/project/'
+    resource: 'project.yaml'

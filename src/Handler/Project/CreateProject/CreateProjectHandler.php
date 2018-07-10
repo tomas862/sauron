@@ -10,6 +10,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 class CreateProjectHandler
 {
     /**
+     *
      * @var ObjectManager
      */
     private $manager;

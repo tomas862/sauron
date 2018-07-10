@@ -10,6 +10,7 @@ use App\Handler\HandlerResultInterface;
 class ProjectResponse implements HandlerResultInterface
 {
     /**
+     *
      * @var Project
      */
     private $project;
@@ -25,6 +26,7 @@ class ProjectResponse implements HandlerResultInterface
     }
 
     /**
+     *
      * @inheritDoc
      */
     public function getResponseMessage(): ?string
@@ -33,6 +35,7 @@ class ProjectResponse implements HandlerResultInterface
     }
 
     /**
+     *
      * @inheritDoc
      */
     public function serialize(): array

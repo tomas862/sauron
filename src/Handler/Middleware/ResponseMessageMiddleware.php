@@ -14,11 +14,12 @@ class ResponseMessageMiddleware implements Middleware
     {
         /** @var HandlerResultInterface $returnValue */
         $returnValue = $next($command);
+
         $serializedResult = [
-            'message' => $returnValue->getResponseMessage() ?: 'ok',
+            'message' => $returnValue->getResponseMessage(),
             'body' => $returnValue->serialize()
         ];
-        
+
         return new JsonResponse($serializedResult);
     }
 }

@@ -1,0 +1,13 @@
+index:
+    path: '/'
+    methods: [GET]
+    defaults:
+        _controller: 'App\Controller\App\ShowApp'
+
+api_routes:
+    prefix: /api/{version}/
+    resource: 'routes/api.yaml'
+    requirements:
+        version: '%api_version%'
+    defaults:
+        version: '%api_version%'
