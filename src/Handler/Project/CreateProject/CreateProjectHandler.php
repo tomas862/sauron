@@ -34,6 +34,6 @@ class CreateProjectHandler
         $this->manager->persist($project);
         $this->manager->flush();
 
-        return new ProjectResponse($project);
+        return new CreateProjectResponse($project);
     }
 }
