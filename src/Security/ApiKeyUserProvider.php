@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Security;
 
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\User\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
@@ -16,9 +15,10 @@ class ApiKeyUserProvider implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        return new User(
+        return new SecurityUser(
             $username,
-            $password = null
+            'test',
+            []
         );
     }
 
@@ -35,6 +35,6 @@ class ApiKeyUserProvider implements UserProviderInterface
      */
     public function supportsClass($class)
     {
-        return User::class === $class;
+        return SecurityUser::class === $class;
     }
 }
