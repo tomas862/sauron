@@ -71,7 +71,7 @@ class CreateProject extends AbstractController
         $result = $this->commandBus->handle(
             $createProjectCommand
         );
-
+        
         return new JsonResponse($result->serialize());
     }
 }
