@@ -15,6 +15,7 @@ class RegisterUserCommand
     /**
      * @var string
      * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
      */
     private $plainPassword;
 

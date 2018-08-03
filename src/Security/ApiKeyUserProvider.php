@@ -15,11 +15,10 @@ class ApiKeyUserProvider implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-        return new SecurityUser(
-            $username,
-            'test',
-            []
-        );
+        $securityUser = new SecurityUser();
+        $securityUser->setUsername($username);
+        $securityUser->setPassword('test');
+        return $securityUser;
     }
 
     /**

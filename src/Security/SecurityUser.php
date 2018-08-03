@@ -16,22 +16,21 @@ class SecurityUser implements UserInterface
      * @var string
      */
     private $password;
-    /**
-     * @var array|string[]
-     */
-    private $roles;
 
     /**
      * @param string $username
-     * @param string $password
-     * @param string[] $roles
      */
-    public function __construct(string $username, string $password, array $roles)
+    public function setUsername(string $username): void
     {
-
         $this->username = $username;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
         $this->password = $password;
-        $this->roles = $roles;
     }
 
     /**
@@ -39,7 +38,7 @@ class SecurityUser implements UserInterface
      */
     public function getRoles()
     {
-        return $this->roles;
+        return ['ROLE_USER'];
     }
 
     /**

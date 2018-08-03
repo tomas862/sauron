@@ -49,6 +49,7 @@ services:
     App\Handler\Security\Register\RegisterUserHandler:
         arguments:
             - '@doctrine_mongodb.odm.default_document_manager'
+            - '@security.password_encoder'
 
         tags:
             - {name: tactician.handler, typehints: true}
