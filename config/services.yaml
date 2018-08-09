@@ -45,11 +45,13 @@ services:
     App\Handler\Project\CreateProject\CreateProjectHandler:
         arguments:
             - '@doctrine_mongodb.odm.default_document_manager'
+        tags:
+            - {name: tactician.handler, typehints: true}
 
     App\Handler\Security\Register\RegisterUserHandler:
         arguments:
             - '@doctrine_mongodb.odm.default_document_manager'
             - '@security.password_encoder'
-
+            - '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
         tags:
             - {name: tactician.handler, typehints: true}

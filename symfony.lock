@@ -47,6 +47,9 @@
     "exsyst/swagger": {
         "version": "v0.4.0"
     },
+    "firebase/php-jwt": {
+        "version": "v5.0.0"
+    },
     "league/tactician": {
         "version": "v1.0.3"
     },
