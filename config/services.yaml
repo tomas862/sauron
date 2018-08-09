@@ -30,7 +30,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-
     get_set_method_normalizer:
         class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
         public: false
@@ -55,3 +54,8 @@ services:
             - '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
         tags:
             - {name: tactician.handler, typehints: true}
+
+    App\Validator\UniqueEmailValidator:
+        class: 'App\Validator\UniqueEmailValidator'
+        arguments:
+        - '@doctrine_mongodb.odm.default_document_manager'

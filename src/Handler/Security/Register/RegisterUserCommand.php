@@ -3,12 +3,14 @@
 namespace App\Handler\Security\Register;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as AppAssert;
 
 class RegisterUserCommand
 {
     /**
      * @var string
      * @Assert\NotBlank()
+     * @AppAssert\UniqueEmail
      * @Assert\Email()
      */
     private $email;
