@@ -32,13 +32,13 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, Authentica
         }
 
         $apiKey = $token->getCredentials();
-        $username = $userProvider->getUsernameForApiKey($apiKey);
+        $userId = $userProvider->getUsernameForApiKey($apiKey);
 
-        if (!$username) {
+        if (!$userId) {
             throw new CustomUserMessageAuthenticationException('Failed to authenticate.');
         }
 
-        $user = $userProvider->loadUserByUsername($username);
+        $user = $userProvider->loadUserByUsername($userId);
 
         return new PreAuthenticatedToken(
             $user,
@@ -56,7 +56,7 @@ class ApiKeyAuthenticator implements SimplePreAuthenticatorInterface, Authentica
     public function createToken(Request $request, $providerKey)
     {
         $apiKey = $request->headers->get('apikey');
-
+        //todo: test here
         if (!$apiKey) {
             throw new BadCredentialsException();
         }
