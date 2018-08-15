@@ -35,6 +35,8 @@ services:
         public: false
         tags: [serializer.normalizer]
 
+    Doctrine\Common\Persistence\ObjectManager: '@doctrine_mongodb.odm.default_document_manager'
+
     League\Tactician\CommandBus:
         alias: tactician.commandbus
 
@@ -42,20 +44,9 @@ services:
         class: 'App\Handler\Middleware\ResponseMessageMiddleware'
 
     App\Handler\Project\CreateProject\CreateProjectHandler:
-        arguments:
-            - '@doctrine_mongodb.odm.default_document_manager'
         tags:
             - {name: tactician.handler, typehints: true}
 
     App\Handler\Security\Register\RegisterUserHandler:
-        arguments:
-            - '@doctrine_mongodb.odm.default_document_manager'
-            - '@security.password_encoder'
-            - '@Symfony\Component\EventDispatcher\EventDispatcherInterface'
         tags:
             - {name: tactician.handler, typehints: true}
-
-    App\Validator\UniqueEmailValidator:
-        class: 'App\Validator\UniqueEmailValidator'
-        arguments:
-        - '@doctrine_mongodb.odm.default_document_manager'
