@@ -5,7 +5,7 @@ namespace App\Handler\Security\Register;
 use App\Security\Token\TokenEncoderInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class RegistrationEventSubscriber implements EventSubscriberInterface
+final class RegistrationEventSubscriber implements EventSubscriberInterface
 {
     /**
      * @var TokenEncoderInterface

@@ -4,7 +4,7 @@ namespace App\Handler\Security\Register;
 
 use App\Handler\HandlerResultInterface;
 
-class RegisterUserResponse implements HandlerResultInterface
+final class RegisterUserResponse implements HandlerResultInterface
 {
     /**
      * @var UserRegisteredEvent

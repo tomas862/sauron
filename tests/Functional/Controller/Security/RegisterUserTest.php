@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller\Security;
 
 use App\DataFixtures\UserFixtures;
-use League\Tactician\Exception\InvalidCommandException;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 class RegisterUserTest extends WebTestCase
@@ -22,7 +21,7 @@ class RegisterUserTest extends WebTestCase
         );
     }
 
-    public function testItRegistersUser(): void
+    public function testItRegistersUserAndGetsValidToken(): void
     {
         $client = $this->makeClient();
         $client->request(
