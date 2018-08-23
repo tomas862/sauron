@@ -4,13 +4,22 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller\Security;
 
+use App\DataFixtures\UserFixtures;
+use League\Tactician\Exception\InvalidCommandException;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 class RegisterUserTest extends WebTestCase
 {
     public function setUp()
     {
-        $this->loadFixtures();
+        $this->loadFixtures(
+            [
+                UserFixtures::class
+            ],
+            false,
+            null,
+            'doctrine_mongodb'
+        );
     }
 
     public function testItRegistersUser(): void
@@ -26,20 +35,5 @@ class RegisterUserTest extends WebTestCase
         );
 
         $this->assertStatusCode(200, $client);
-    }
-
-    public function testItPreventsUserRegistration(): void
-    {
-        $client = $this->makeClient();
-        $client->request(
-            'POST',
-            '/register',
-            [],
-            [],
-            ['CONTENT_TYPE' => 'application/json'],
-            '{"email": "notemail","plainPassword": "123456789"}'
-        );
-
-        $this->assertStatusCode(500, $client);
     }
 }
